@@ -1,5 +1,5 @@
-import 'package:flutter_catalog/app/app.dart';
-import 'package:flutter_catalog/counter/counter.dart';
+import 'package:flutter_catalog/features/app/app.dart';
+import 'package:flutter_catalog/features/counter/counter.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
