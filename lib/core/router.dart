@@ -7,15 +7,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/features/counter/counter.dart';
 
-extension RouteSettingsEx on RouteSettings {
-  T routeArgs<T>() => arguments as T;
-}
+// extension RouteSettingsEx on RouteSettings {
+//   T routeArgs<T>() => arguments as T;
+// }
 
-extension BuildContextEx on BuildContext {
-  NavigatorState navigator() => Navigator.of(this);
-  NavigatorState rootNavigator() => Navigator.of(this, rootNavigator: true);
-  T routeArgs<T>() => ModalRoute.of(this)?.settings.arguments as T;
-}
+// extension BuildContextEx on BuildContext {
+//   NavigatorState navigator() => Navigator.of(this);
+//   NavigatorState rootNavigator() => Navigator.of(this, rootNavigator: true);
+//   T routeArgs<T>() => ModalRoute.of(this)?.settings.arguments as T;
+// }
 
 class RouteModel {
   RouteModel(
