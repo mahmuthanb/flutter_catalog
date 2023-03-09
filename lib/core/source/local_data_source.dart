@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 
 abstract class LocalDataSource {
   bool get isDark;
-  Future<dynamic> setIsDark(bool flag);
+  Future<dynamic> setIsDark({bool flag});
   Future<void> clear();
 }
 
@@ -23,7 +23,7 @@ class LocalDataSourceImpl implements LocalDataSource {
   bool get isDark => (_getStorage.read('isDark') as bool) == true;
 
   @override
-  Future<dynamic> setIsDark(bool flag) {
+  Future<dynamic> setIsDark({bool? flag}) {
     return _getStorage.write('isDark', flag);
   }
 }
@@ -41,7 +41,7 @@ class TestLocalDataSource implements LocalDataSource {
   bool get isDark => _isDark;
 
   @override
-  Future<dynamic> setIsDark(bool flag) async {
-    _isDark = flag;
+  Future<dynamic> setIsDark({bool? flag}) async {
+    _isDark = flag ?? false;
   }
 }
