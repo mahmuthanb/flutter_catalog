@@ -1,0 +1,12 @@
+{
+    "@@locale": "tr",
+    "counterAppBarTitle": "Sayaç",
+    "@counterAppBarTitle": {
+        "description": "Sayaç sayfasının başlığında gösterilen metin"
+    },
+    "catalogAppBarTitle": "Katalog",
+    "@catalogAppBarTitle": {
+        "description": "Katalog sayfasının başlığında gösterilen metin"
+    }
+
+}
