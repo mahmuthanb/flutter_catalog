@@ -5,6 +5,7 @@
 // **************************************************************************
 
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/features/catalog/view/catalog_page.dart';
 import 'package:flutter_catalog/features/counter/counter.dart';
 
 // extension RouteSettingsEx on RouteSettings {
@@ -30,7 +31,7 @@ class EasyRoutes {
   static String splash = 'splash';
   static String login = 'login';
   static String root = '/';
-  static String widgetCatalog = '/widget_catalog';
+  static String catalog = '/catalog';
   static String counter = '/counter';
 }
 
@@ -38,6 +39,9 @@ final Map<String, RouteModel> _routes = {
   EasyRoutes.counter: RouteModel(
     (_) => const CounterPage(),
   ),
+  EasyRoutes.catalog: RouteModel(
+    (_) => const CatalogPage(),
+  )
 };
 Route<dynamic>? onGenerateRoute(RouteSettings routeSettings) {
   final route = _routes[routeSettings.name];
