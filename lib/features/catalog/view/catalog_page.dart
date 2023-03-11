@@ -21,10 +21,12 @@ class CatalogView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final data = context.read<CatalogCubit>().getListOfWidgets();
     return Scaffold(
       appBar: AppBar(title: Text(l10n.catalogAppBarTitle)),
-      body: const Center(
-        child: Text('Dashboard Page'),
+      body: ListView.builder(
+        itemCount: data?.length,
+        itemBuilder: (context, index) => Text(data![index]),
       ),
     );
   }
