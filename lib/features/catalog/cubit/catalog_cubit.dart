@@ -21,7 +21,7 @@ class CatalogCubit extends Cubit<CatalogState> {
       'Loaders',
       'Layouts',
     ];
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 1), () {
       data = list;
       emit(CatalogState.loadaed(data: data, themeMode: themeMode));
     });
