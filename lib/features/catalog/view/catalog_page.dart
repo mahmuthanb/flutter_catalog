@@ -24,9 +24,13 @@ class CatalogView extends StatelessWidget {
     final data = context.read<CatalogCubit>().getListOfWidgets();
     return Scaffold(
       appBar: AppBar(title: Text(l10n.catalogAppBarTitle)),
-      body: ListView.builder(
-        itemCount: data?.length,
-        itemBuilder: (context, index) => Text(data![index]),
+      body: BlocBuilder<CatalogCubit, CatalogState>(
+        builder: (context, state) {
+          return ListView.builder(
+            itemCount: data?.length,
+            itemBuilder: (context, index) => Text(data![index]),
+          );
+        },
       ),
     );
   }
