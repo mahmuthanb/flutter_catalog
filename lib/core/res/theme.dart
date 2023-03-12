@@ -1,3 +1,4 @@
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
@@ -8,4 +9,10 @@ class AppTheme {
           brightness: isDark ? Brightness.dark : Brightness.light,
         ),
       );
+}
+
+class AppThemeFlex {
+  static ThemeData theme({bool isDark = false}) => isDark
+      ? FlexThemeData.dark(scheme: FlexScheme.sakura)
+      : FlexThemeData.light(scheme: FlexScheme.sakura);
 }
