@@ -1,11 +1,8 @@
 part of 'catalog_cubit.dart';
 
-@immutable
-abstract class CatalogState {}
-
-class CatalogInitial extends CatalogState {}
-
-class CatalogLoaded extends CatalogState {
-  CatalogLoaded({this.data});
-  final List<String>? data;
+@freezed
+class CatalogState with _$CatalogState {
+  const factory CatalogState.initial() = Initial;
+  const factory CatalogState.loadaed({List<String>? data, bool? themeMode}) =
+      Loaded;
 }

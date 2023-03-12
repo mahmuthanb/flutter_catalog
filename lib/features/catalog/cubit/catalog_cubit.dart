@@ -1,13 +1,14 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_catalog/core/source/local_data_source.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'catalog_state.dart';
+part 'catalog_cubit.freezed.dart';
 
 class CatalogCubit extends Cubit<CatalogState> {
-  CatalogCubit(this._localDataSource) : super(CatalogInitial()) {
+  CatalogCubit(this._localDataSource) : super(const CatalogState.initial()) {
     getListOfWidgets();
   }
   final LocalDataSource _localDataSource;
@@ -22,13 +23,13 @@ class CatalogCubit extends Cubit<CatalogState> {
     ];
     Future.delayed(const Duration(seconds: 5), () {
       data = list;
-      emit(CatalogLoaded(data: data));
+      emit(CatalogState.loadaed(data: data, themeMode: themeMode));
     });
   }
 
   void changeThemeMode({required bool flag}) {
     _localDataSource.setIsDark(flag: flag);
-    emit(CatalogLoaded(data: ["a", "s", "f"]));
+    emit((state as Loaded).copyWith(themeMode: themeMode));
   }
 
   bool get themeMode => _localDataSource.isDark ?? false;

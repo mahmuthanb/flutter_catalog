@@ -27,35 +27,48 @@ class CatalogView extends StatelessWidget {
     final l10n = context.l10n;
     return Scaffold(
       body: BlocBuilder<CatalogCubit, CatalogState>(
-        builder: (context, state) {
-          if (state is CatalogLoaded) {
+        builder: (context, state) => state.maybeWhen(
+          initial: () => const Center(
+            child: Text('loading'),
+          ),
+          orElse: () => const ErrorWidget(),
+          loadaed: (data, themeMode) {
             return Scaffold(
               appBar: AppBar(
                 title: Text(l10n.catalogAppBarTitle),
                 actions: [
                   Switch(
-                    value: context.read<CatalogCubit>().themeMode,
+                    value: themeMode ?? false,
                     onChanged: (value) => context
                         .read<CatalogCubit>()
                         .changeThemeMode(flag: value),
                   )
                 ],
               ),
-              body: ListView.builder(
-                itemCount: state.data?.length,
-                itemBuilder: (context, index) => Card(
-                  elevation: 1,
-                  child: Text(state.data![index]),
-                ),
-              ),
+              body: data != null && data.isNotEmpty
+                  ? ListView.builder(
+                      itemCount: data.length,
+                      itemBuilder: (context, index) => Card(
+                        elevation: 1,
+                        child: Text(data[index]),
+                      ),
+                    )
+                  : Container(),
             );
-          } else {
-            return const Center(
-              child: Text('Loading'),
-            );
-          }
-        },
+          },
+        ),
       ),
+    );
+  }
+}
+
+class ErrorWidget extends StatelessWidget {
+  const ErrorWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text('Failed to load data'),
     );
   }
 }
