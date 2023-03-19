@@ -29,8 +29,7 @@ class AppView extends StatelessWidget {
     return BlocBuilder<AppCubit, AppState>(
       builder: (context, state) {
         return MaterialApp(
-          theme:
-              AppThemeFlex.theme(isDark: (state as Initial).themeMode as bool),
+          theme: AppThemeFlex.theme(),
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           onGenerateRoute: onGenerateRoute,
